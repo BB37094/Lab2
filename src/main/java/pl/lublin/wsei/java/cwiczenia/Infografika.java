@@ -3,10 +3,9 @@ package pl.lublin.wsei.java.cwiczenia;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Infografika {
-    String tytul, adresStrony, adresGrafiki, adresMiniaturki;
-    int wysokosc;
-    int szerokosc;
+public class Infografika {
+    public String tytul, adresStrony, adresGrafiki, adresMiniaturki;
+    public int wysokosc, szerokosc;
 
     public Infografika(String tekst) {
 
