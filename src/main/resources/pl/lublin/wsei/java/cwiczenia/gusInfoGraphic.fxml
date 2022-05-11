@@ -15,6 +15,6 @@
       <ImageView fx:id="imgMiniaturka" fitHeight="250.0" fitWidth="350.0" layoutX="428.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="428.0" layoutY="183.0" text="Miniaturka" />
       <Button fx:id="btnPokazInfografike" layoutX="697.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Pokaż" />
-      <Button fx:id="btnPrzejdzDoStrony" layoutX="682.0" layoutY="586.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="92.0" text="Załaduj" />
+      <Button fx:id="btnPrzejdzDoStrony" layoutX="682.0" layoutY="586.0" mnemonicParsing="false" onAction="#btnZaladujStrone" prefHeight="25.0" prefWidth="92.0" text="Załaduj" />
    </children>
 </AnchorPane>

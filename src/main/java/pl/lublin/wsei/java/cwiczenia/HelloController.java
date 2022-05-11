@@ -1,5 +1,6 @@
 package pl.lublin.wsei.java.cwiczenia;
 
+import javafx.application.HostServices;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 import java.io.File;
 
 public class HelloController {
@@ -21,7 +24,7 @@ public class HelloController {
     FileChooser fileChooser = new FileChooser();
     FileChooser.ExtensionFilter xmlFilter = new FileChooser.ExtensionFilter("Pliki XML (*.xml)", "*.xml");
 
-    public ListView lstInfografiki;
+    public ListView<String> lstInfografiki;
     ObservableList<String> tytuly = FXCollections.observableArrayList();
     GusInfoGraphicList igList;
 
@@ -29,6 +32,8 @@ public class HelloController {
     public ImageView imgMiniaturka;
     public Button btnPokazInfografike;
     public Button btnPrzejdzDoStrony;
+
+    private Infografika selInfografika;
 
     @FXML
     public void initialize()
@@ -43,6 +48,7 @@ public class HelloController {
                         int index = new_val.intValue();
                         if (index != -1)
                         {
+                            selInfografika = igList.infografiki.get(index);
                             txtAdresStrony.setText(igList.infografiki.get(index).adresStrony);
                             Image image = new Image(igList.infografiki.get(index).adresMiniaturki);
                             imgMiniaturka.setImage(image);
@@ -51,6 +57,7 @@ public class HelloController {
                         {
                             txtAdresStrony.setText("");
                             imgMiniaturka.setImage(null);
+                            selInfografika = null;
                         }
                     }
                 }
@@ -71,5 +78,24 @@ public class HelloController {
         {
             lbFile.setText("Wczytaj plik");
         }
+    }
+
+    public void btnZaladujStrone(ActionEvent actionEvent)
+    {
+        if(selInfografika != null)
+            hostServices.showDocument(selInfografika.adresStrony);
+    }
+
+    private Stage stage;
+    private HostServices hostServices;
+
+    public void setStage(Stage stage)
+    {
+        this.stage = stage;
+    }
+
+    public void setHostServices (HostServices hostServices)
+    {
+        this.hostServices = hostServices;
     }
 }
